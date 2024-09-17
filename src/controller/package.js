@@ -54,7 +54,7 @@ const GET_PACKAGE_BY_ID = async (req, res) => {
   try {
     const response = await PackageModel.findOne({ id: req.params.id });
 
-    return res.status(200).json({ packages: response });
+    return res.status(200).json({ package: response });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: "error in application" });
@@ -104,7 +104,7 @@ const DELETE_PACKAGE_BY_ID = async (req, res) => {
     if (!response) {
       return res.status(404).json({ message: "Package not found" });
     }
-
+    await PackageModel.deleteOne({ id: req.params.id });
     return res
       .status(200)
       .json({ message: "Package was deleted", package: response });

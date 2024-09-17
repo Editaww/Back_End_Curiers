@@ -5,7 +5,7 @@ const packageShema = mongoose.Schema({
   recipientName: { type: String, required: true },
   deliveryAddress: { type: String, required: true },
   weight: { type: Number, required: true },
-  dueDate: { type: Date, required: true },
+  dueDate: { type: Date, required: false },
   status: {
     type: String,
     required: true,

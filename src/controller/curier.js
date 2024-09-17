@@ -52,7 +52,7 @@ const LOGIN = async (req, res) => {
       { expiresIn: "24h" }
     );
 
-    return res.status(200).json({ token: token });
+    return res.status(200).json({ token: token, curierId: curier.id });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: "error in application" });
@@ -99,4 +99,20 @@ const DELETE_CURIER_BY_ID = async (req, res) => {
   }
 };
 
-export { SIGN_UP, LOGIN, GET_CURIERS, GET_CURIER_BY_ID, DELETE_CURIER_BY_ID };
+const VALIDATE_LOGIN = async (req, res) => {
+  try {
+    return res.status(200).json({ message: "User Ok" });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: "error in application" });
+  }
+};
+
+export {
+  SIGN_UP,
+  LOGIN,
+  GET_CURIERS,
+  GET_CURIER_BY_ID,
+  DELETE_CURIER_BY_ID,
+  VALIDATE_LOGIN,
+};
